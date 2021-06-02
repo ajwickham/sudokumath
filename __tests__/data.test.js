@@ -1,5 +1,4 @@
-import Translate from './../src/data';
-import Test from './../src/main';
+import SudArray from './../src/main';
 
 describe('Arabic to Roman', () => {
 
