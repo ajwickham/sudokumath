@@ -6,32 +6,32 @@ export default function SudArray(grid,solution) {
   this.grid = grid;
   this.solution = solution;
 }
-
+/*
 const fullArraySudoku = new SudArray([5,3,0,0,7,0,0,0,0,6,0,0,1,9,5,0,0,0,0,9,8,0,0,0,0,6,0,8,0,0,0,6,0,0,0,3,4,0,0,8,0,3,0,0,1,7,0,0,0,2,0,0,0,6,
   0,6,0,0,0,0,2,8,0,0,0,0,4,1,9,0,0,5,0,0,0,0,8,0,0,7,9]);
-
+*/
 let blankPosition = []  
 
-SudArray.prototype.pushIntoArray = function(position) {
-    this.grid[5] = 1; 
-};
-
-/*SudArray.prototype.retryEarlierNumbers = function(problemPosition) {
+SudArray.prototype.retryEarlierNumbers = function(problemPosition) {
   let x;
   let y;
-  for (let j = problemPosition-1; j>-1; j--) {  //j is the previous blank position 
-    for(let k = 1; k<9; k++){
-      x = findNumberToTry(j,(this.solution[j]+k)); //tries a number higher than found before
-      if(x !=10){
-        this.solution[j]=x; //if there is a higher number, sets that higher number
-        for (let m = 1; m < )
-        y=this.findNumberToTry(j+1,1) 
-        return
-      };
-
-    }
-  }
-};*/
+  for(let k = 1; k<9; k++){
+    for (let i = problemPosition-1; i>-1; i--) {  //i is the previous blank position 
+      x = this.findNumberToTry(i,((this.solution[blankPosition[i]])+1)); //tries a number higher than found before
+      if(x[1] !=10){
+        this.solution[blankPosition[i]]=x[1]; //if there is a higher number, sets that higher number
+        i=i+2;   //pushes it onto the next blank number
+        if(i>problemPosition) {  
+          return  //if it's caught up to the problem number then reture
+        }
+      }    
+      else { 
+        this.solution[blankPosition[i]]=0  //if previous comes up 10, set that to zero before going one further back
+      }//otherwise go back to the previous blank
+    }  //if it gets to zeroth blank position and hasn't caught up then try 
+      // higher start number 
+  } 
+};
 
 SudArray.prototype.buildSolution = function() {
   blankPosition = this.findBlanks();
@@ -41,16 +41,13 @@ SudArray.prototype.buildSolution = function() {
   for (let i = 0; i<blankPosition.length; i++) {  //loops through all the positions
     x = this.findNumberToTry(i,k)
     if (x[1]===10) {
-      i = i-2;
-      k=k+1
-    }
-    //if the number comes back as 10 there is a problem with a previous trial number.
-    //need to go back, and try a higher number on the previous blank. And then the previous 
-    //blank and so on all the way back to the first blank
-    
+      this.solution[blankPosition[i]]=0;
+      this.retryEarlierNumbers(i);
+      i=i-1;
+    } 
     else {
-    this.solution[blankPosition[i]]=x[1];
-    }
+      this.solution[blankPosition[i]]=x[1];
+    }  
   }
   return this.solution
 };
@@ -73,13 +70,12 @@ SudArray.prototype.startSolution = function() {
 };
 
 SudArray.prototype.findNumberToTry = function(count,r) {
-  blankPosition = this.findBlanks();
   let q;
   let s;
   for (let i=r; i<11; i++) {
     q = this.checkRow(blankPosition[count],r);      //tries a 1, comes back with lowest row
     s = this.checkColumn(blankPosition[count],q);   //puts that in to find lowest column
-    r = this.checkColumn(blankPosition[count],s)    //then puts that to find lowest in square.
+    r = this.checkSquare(blankPosition[count],s)    //then puts that to find lowest in square.
                                                     //sets to repeat finding if lowest
                                                     /*column works for lowest row and square. 
                                                   If not finds next lowest row and next lowest
@@ -123,7 +119,6 @@ SudArray.prototype.checkColumn = function(position,startNumber) {
   };
 };
 SudArray.prototype.checkSquare = function(position,startNumber) {
-  let k = 1
   let count = 0;
   let col = Math.trunc((position%9)/3);
   let ro = Math.trunc(Math.trunc(position/9)/3);

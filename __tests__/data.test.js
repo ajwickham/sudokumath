@@ -48,9 +48,9 @@ describe('Creatingcd and testing grid', () => {
     const testArray = new SudArray([1,2,0,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
     expect(testArray.buildSolution()).toEqual([1,2,6,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9]);
   });
-  test('should store 2 result arrays in an array', () => {
-    const testArray = new SudArray([0,2,0,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([3,2,1,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9]);
+  test('should store multiple result numbers in an array', () => {
+    const testArray = new SudArray([0,2,0,4,7,7,7,7,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
+    expect(testArray.buildSolution()).toEqual([6,2,8,4,7,7,7,7,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[]);
   });
   test('should take into account previous trials', () => {
     const testArray = new SudArray([0,2,0,4,1,7,7,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
@@ -58,15 +58,21 @@ describe('Creatingcd and testing grid', () => {
   });
   test('if it gets to 9 and does not find a number, then an earlier number was incorrect. It should go back a previous trial and put in a higher number', () => {
     const testArray = new SudArray([0,2,0,4,1,5,0,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([3,2,7,4,1,5,6,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9]);
+    expect(testArray.buildSolution()).toEqual([3,2,7,4,1,5,6,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[]);
   });
-  test('Check Square. Should find a number that does not break the square rule', () => {
-    const testArray = new SudArray([0,8,1,7,0,1,0,3,0,4,0,9,0,0,0,0,0,0,0,5,0,0,6,4,1,8,7,0,0,0,0,9,0,0,0,8,0,0,6,1,0,5,0,0,0,3,5,0,0,0,0,2,9,0,6,0,4,0,7,0,9,0,1,0,0,0,0,8,0,0,4,0,2,0,0,5,0,0,7,0],[])
+  test('more complex', () => {
+    const testArray = new SudArray([0,8,0,7,0,1,0,3,0,4,1,9,2,5,3,5,7,8],[])
     testArray.startSolution();
-    expect(testArray.checkSquare(0,1)).toEqual(2)
+    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,5,3,5,7,8]);
   });
-  test('For real', () => {
-    const testArray = new SudArray([0,8,0,7,0,1,0,3,0,4,0,9,0,0,0,0,0,0,0,5,0,0,6,4,1,8,7,0,0,0,0,9,0,0,0,8,0,0,6,1,0,5,0,0,0,3,5,0,0,0,0,2,9,0,6,0,4,0,7,0,9,0,1,0,0,0,0,8,0,0,4,0,2,0,0,5,0,0,7,0],[])
+  test('even more complex', () => {
+    const testArray = new SudArray([0,8,0,7,0,1,0,3,0,4,0,9,0,0,0,0,0,0],[])
+    testArray.startSolution();
+    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,3,6,5,7,8]);
+  });
+  test('Full Sudoko', () => {
+    const testArray = new SudArray([2,8,6,7,4,1,9,3,5,4,1,9,0,0,0,0,0,0,0,5,0,0,6,0,4,1,8,7,0,0,0,0,9,0,0,0,8,0,0,6,1,0,5,0,0,0,3,5,0,0,0,0,2,9,0,6,0,4,0,7,0,9,0,1,0,0,0,0,8,0,0,4,0,2,0,0,5,0,0,7,0],[])
+    testArray.startSolution();
     expect(testArray.buildSolution()).toEqual([2,8,6,7,4,1,9,3,5,4,1,9,3,8,5,7,6,2,3,5,7,9,6,2,4,1,8,7,4,1,5,2,9,3,8,6,8,9,2,6,1,3,5,4,7,6,3,5,8,7,4,1,2,9,5,6,8,4,3,7,2,9,1,1,7,3,2,9,8,6,5,4,9,2,4,1,5,6,8,7,3]);
   });
-})
+});
