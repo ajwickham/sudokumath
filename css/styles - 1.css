@@ -1,0 +1,83 @@
+.wrapper {
+  display: grid;
+  gap: 1vw;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: repeat(11, 8vw);
+  text-align: center;
+  font-size: 6vw;
+  background-color: aqua;
+}
+#score {
+  grid-column: 2/34;
+  text-align: left;
+  font-size: 2vw;
+  text-decoration-line: none;
+}
+
+
+
+.vlineone {
+  grid-column: 5/6;
+  grid-row: 1/30;
+  background-color: black;
+}
+.vlinetwo {
+  grid-column: 15/16;
+  grid-row: 1/30;
+  background-color: black;
+}
+.hlineone {
+  grid-column: 25/26;
+  grid-row: 10/11;
+  background-color: black;
+}
+.hlinetwo {
+  grid-column: 35/36;
+  grid-row: 20/21;
+  background-color: black;
+}
+#one {
+  grid-column: 37/44;
+  grid-row: 0/4;
+  height: 10vw;
+}
+#two { 
+  grid-column: 47/53;
+  grid-row: 0/4;
+  height: 10vw;
+}
+#three {
+  grid-column: 56/64;
+  grid-row: 0/4;
+  height: 10vw;
+}
+#four {
+  grid-column: 37/44;
+  grid-row: 11/19;
+  height: 10vw;
+}
+#five {
+  grid-column: 47/53;
+  grid-row: 11/19;
+  height: 10vw;
+}
+#six {
+  grid-column: 56/64;
+  grid-row: 11/19;
+  height: 10vw;
+}
+#seven {
+  grid-column: 37/44;
+  grid-row: 21/29;
+  height: 10vw;
+}
+#eight {
+  grid-column: 47/53;
+  grid-row: 21/29;
+  height: 10vw;
+}
+#nine {
+  grid-column: 56/64;
+  grid-row: 21/29;
+  height: 10vw; 
+}

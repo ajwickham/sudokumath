@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <title>Noughts and Crosses</title>
+</head>
+<body>
+  <h1>Noughts and Crosses</h1>
+  <br>
+  
+  <div class="row"></div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-6">
+      <button type="submit" id="reset"><u>Reset Board</u></button>
+    </div>  
+  </div>
+  <hr>
+
+  
+  
+  <div class = "row">
+    <div class="col-md-1">
+    </div>
+    <div id="score"><p><span>Whose go?    </span><span id="go"></span></p>
+    <p><span>Score for player X is:    </span><span id="xscore">0</span></p>
+    <p><span>Score for player O is:    </span><span id="oscore">0</span></p>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    
+      <div id="oneone"><p id="poneone"></p></div>
+      <div id="onetwo"><p id="ponetwo"></p></div>
+      <div id="onethree"><p id="ponethree"></p></div>
+      <div id="onefour"><p id="ponefour"></p></div>
+      <div id="onefive"><p id="ponefive"></p></div>
+      <div id="onesix"><p id="ponesix"></p></div>
+      <div id="oneseven"><p id="poneseven"></p></div>
+      <div id="oneeight"><p id="poneeight"></p></div>
+      <div id="onenine"><p id="ponenine"></p></div>
+      <div id="twoone"><p id="ptwoone"></p></div>
+      <div id="twotwo"><p id="ptwotwo"></p></div>
+      <div id="twothree"><p id="ptwothree"></p></div>
+      <div id="twofour"><p id="ptwofour"></p></div>
+      <div id="twofive"><p id="ptwofive"></p></div>
+      <div id="twosix"><p id="ptwosix"></p></div>
+      <div id="twoseven"><p id="ptwoseven"></p></div>
+      <div id="twoeight"><p id="ptwoeight"></p></div>
+      <div id="twonine"><p id="ptwonine"></p></div>
+      <div id="threeone"><p id="pthreeone"></p></div>
+      <div id="threetwo"><p id="pthreetwo"></p></div>
+      <div id="threethree"><p id="pthreethree"></p></div>
+      <div id="threefour"><p id="pthreefour"></p></div>
+      <div id="threefive"><p id="pthreefive"></p></div>
+      <div id="threesix"><p id="pthreesix"></p></div>
+      <div id="threeseven"><p id="pthreeseven"></p></div>
+      <div id="threeeight"><p id="pthreeeight"></p></div>
+      <div id="threenine"><p id="pthreenine"></p></div>
+      <div id="fourone"><p id="pfourone"></p></div>
+      <div id="fourtwo"><p id="pfourtwo"></p></div>
+      <div id="fourthree"><p id="pfourthree"></p></div>
+      <div id="fourfour"><p id="pfourfour"></p></div>
+      <div id="fourfive"><p id="pfourfive"></p></div>
+      <div id="foursix"><p id="pfoursix"></p></div>
+      <div id="fourseven"><p id="pfourseven"></p></div>
+      <div id="foureight"><p id="pfoureight"></p></div>
+      <div id="fournine"><p id="pfournine"></p></div>
+      <div id="fiveone"><p id="pfiveone"></p></div>
+      <div id="fivetwo"><p id="pfivetwo"></p></div>
+      <div id="fivethree"><p id="pfivethree"></p></div>
+      <div id="fivefour"><p id="pfivefour"></p></div>
+      <div id="fivefive"><p id="pfivefive"></p></div>
+      <div id="fivesix"><p id="pfivesix"></p></div>
+      <div id="fiveseven"><p id="pfiveseven"></p></div>
+      <div id="fiveeight"><p id="pfiveeight"></p></div>
+      <div id="fivenine"><p id="pfivenine"></p></div>
+      <div id="sixone"><p id="psixone"></p></div>
+      <div id="sixtwo"><p id="psixtwo"></p></div>
+      <div id="sixthree"><p id="psixthree"></p></div>
+      <div id="sixfour"><p id="psixfour"></p></div>
+      <div id="sixfive"><p id="psixfive"></p></div>
+      <div id="sixsix"><p id="psixsix"></p></div>
+      <div id="sixseven"><p id="psixseven"></p></div>
+      <div id="sixeight"><p id="psixeight"></p></div>
+      <div id="sixnine"><p id="psixnine"></p></div>
+      <div id="sevenone"><p id="psevenone"></p></div>
+      <div id="seventwo"><p id="pseventwo"></p></div>
+      <div id="seventhree"><p id="pseventhree"></p></div>
+      <div id="sevenfour"><p id="psevenfour"></p></div>
+      <div id="sevenfive"><p id="psevenfive"></p></div>
+      <div id="sevensix"><p id="psevensix"></p></div>
+      <div id="sevenseven"><p id="psevenseven"></p></div>
+      <div id="seveneight"><p id="pseveneight"></p></div>
+      <div id="sevennine"><p id="psevenenine"></p></div>
+      <div id="eightone"><p id="peightone"></p></div>
+      <div id="eighttwo"><p id="peighttwo"></p></div>
+      <div id="eightthree"><p id="peightthree"></p></div>
+      <div id="eightfour"><p id="peightfour"></p></div>
+      <div id="eightfive"><p id="peightfive"></p></div>
+      <div id="eightsix"><p id="peightsix"></p></div>
+      <div id="eightseven"><p id="peightseven"></p></div>
+      <div id="eighteight"><p id="peighteight"></p></div>
+      <div id="eightnine"><p id="peightnine"></p></div>
+      <div id="nineone"><p id="pnineone"></p></div>
+      <div id="ninetwo"><p id="pninetwo"></p></div>
+      <div id="ninethree"><p id="pninethree"></p></div>
+      <div id="ninefour"><p id="pninefour"></p></div>
+      <div id="ninefive"><p id="pninefive"></p></div>
+      <div id="ninesix"><p id="pninesix"></p></div>
+      <div id="nineseven"><p id="pnineseven"></p></div>
+      <div id="nineeight"><p id="pnineeight"></p></div>
+      <div id="ninenine"><p id="pninenine"></p></div>
+
+      <div class="vlineone"></div>
+      <div class="vlinetwo"></div>
+      <div class="hlineone"></div>
+      <div class="hlinetwo"></div>
+    
+  </div> 
+</body>
+</html>
