@@ -1,6 +1,6 @@
 import SudArray from './../src/main';
 
-describe('Creatingcd and testing grid', () => {
+describe('Creating and testing grid', () => {
 
   test('should correctly create a arraySudoku object from inputNumber', () => {
     const arraySudoku = new SudArray(2);
@@ -74,5 +74,13 @@ describe('Creatingcd and testing grid', () => {
     const testArray = new SudArray([2,8,6,7,4,1,9,3,5,4,1,9,0,0,0,0,0,0,0,5,0,0,6,0,4,1,8,7,0,0,0,0,9,0,0,0,8,0,0,6,1,0,5,0,0,0,3,5,0,0,0,0,2,9,0,6,0,4,0,7,0,9,0,1,0,0,0,0,8,0,0,4,0,2,0,0,5,0,0,7,0],[])
     testArray.startSolution();
     expect(testArray.buildSolution()).toEqual([2,8,6,7,4,1,9,3,5,4,1,9,3,8,5,7,6,2,3,5,7,9,6,2,4,1,8,7,4,1,5,2,9,3,8,6,8,9,2,6,1,3,5,4,7,6,3,5,8,7,4,1,2,9,5,6,8,4,3,7,2,9,1,1,7,3,2,9,8,6,5,4,9,2,4,1,5,6,8,7,3]);
+  });
+});
+
+describe('Front End', () => {   //These tests won't run properly until the DOM is ready
+  test('reset board', () => {
+    const testArray = new SudArray([],[])
+    testArray.resetBoard(); 
+    expect(testArray.resetBoard()).toEqual(5);
   });
 });
