@@ -15,7 +15,8 @@
     </div>
     <div class="col-md-6"></div>
       <button type="submit" id="reset"><u>Reset Board</u></button>
-      <button type="submit" id="manual"><u>Manual Fill</u></button>
+      <button type="submit" id="manual"><u>Lock For Manual Fill</u></button>
+      <button type="submit" id="test"><u>Test</u></button>
       <button type="submit" id="solution"><u>View Solution</u></button>
     </div>  
   </div>
@@ -33,10 +34,13 @@
   </div>
 -->
 
-  <div class = "container">
+  <div contenteditable="true" class = "container">
+    <div class="form-group">
     <div class="wrapper">
       <div class = "square">
-        <div class = "grid-item"><p id="zero">0</p></div>
+        <div class = "grid-item"><!--p id="0">0</p-->
+          <input id="name" class="form-control" type="text">
+        </div>
         <div class = "grid-item"><p id="1">1</p></div>
         <div class = "grid-item"><p id="2">2</p></div>
         <div class = "grid-item"><p id="9">9</p></div>
@@ -45,6 +49,7 @@
         <div class = "grid-item"><p id="18">18</p></div>
         <div class = "grid-item"><p id="19">19</p></div>
         <div class = "grid-item"><p id="20">20</p></div>
+            
       </div>
       <div class = "square">
         <div class = "grid-item"><p id="3">3</p></div>
@@ -131,9 +136,10 @@
         <div class = "grid-item"><p id="70">70</p></div>
         <div class = "grid-item"><p id="71">71</p></div>
         <div class = "grid-item"><p id="78">78</p></div>
-        <div class = "grid-item"><p id="70">79</p></div>
+        <div class = "grid-item"><p id="79">79</p></div>
         <div class = "grid-item"><p id="80">80</p></div>
       </div>     
+    </div>
     </div>
   </div>  
 </body>

@@ -78,9 +78,9 @@ describe('Creating and testing grid', () => {
 });
 
 describe('Front End', () => {   //These tests won't run properly until the DOM is ready
-  test('reset board', () => {
+  test('correctly capture the manual input', () => {
     const testArray = new SudArray([],[])
-    testArray.resetBoard(); 
-    expect(testArray.resetBoard()).toEqual(5);
+    testArray.lockForManual(); 
+    expect(testArray.grid).toEqual(5);
   });
 });

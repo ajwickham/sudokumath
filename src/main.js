@@ -140,14 +140,27 @@ SudArray.prototype.checkSquare = function(position,startNumber) {
 
 
 
-  SudArray.prototype.resetBoard = function() {
-    document.getElementById("zero").innerHTML = "Zero";
-    return 5;
-  };
+SudArray.prototype.resetBoard = function() {
+  for (let i=0; i<81; i++){  
+  document.getElementById(i.toString()).innerHTML = "0";
+  }  
+};
+
+SudArray.prototype.lockForManual = function() {
+  //for (let i=0; i<81; i++){
+    let inputNumber = $("#name").val();
+  //this.grid.push(inputNumber)
+   
+  alert(inputNumber)
+};
   
 
 $("#reset").on("click",function () {   
   fullArraySudoku.resetBoard();
+});
+$("#manual").on("click",function () {   
+  const manualArray = new SudArray([],[])
+  manualArray.lockForManual();
 });
 
 
