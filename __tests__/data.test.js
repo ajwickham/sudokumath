@@ -81,6 +81,6 @@ describe('Front End', () => {   //These tests won't run properly until the DOM i
   test('correctly capture the manual input', () => {
     const testArray = new SudArray([],[])
     testArray.lockForManual(); 
-    expect(testArray.grid).toEqual(5);
+    expect(testArray.lockForManual).toEqual(5);
   });
 });
