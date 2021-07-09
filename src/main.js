@@ -57,7 +57,7 @@ SudArray.prototype.buildSolution = function() {
 SudArray.prototype.findBlanks = function() {
   blankPosition = [];
   for (let i=0; i<81; i++) {
-    if (this.grid[i] === 0) {
+    if (this.grid[i] == 0) {
       blankPosition.push(i);
     }
   }
@@ -101,7 +101,7 @@ SudArray.prototype.checkRow = function(position,startNumber) {
     }
     if (count === 0) {              // if it hasn't found a 1-9 in all the positions in the 
       return j;                      //row it returns the 1-9
-    }                                //if it hasn't found any possible 1-9 then it returns a 10       
+    }                               //if it hasn't found any possible 1-9 then it returns a 10                                     
   }
 };
 
@@ -140,6 +140,55 @@ SudArray.prototype.checkSquare = function(position,startNumber) {
   }    
 };
 
+SudArray.prototype.checkManualRow = function(position,number) {
+  if (number != 0){
+    let count = 0;
+    for (let i=(parseInt(position/9))*9; i<((parseInt(position/9))*9)+9; i++) {  
+    //compares manual entry against each of the elements in the row
+      if (this.solution[i] === number) {
+        count = count +1;  //if it finds the number the count is increased
+      }
+      if (isNaN(this.solution[i])) {
+        count = "Error";
+        return count;
+      }
+    }
+    if(count>1) {
+      return count
+    }  
+  }   
+}; 
+
+SudArray.prototype.checkManualColumn = function(position,number) {
+  if (number != 0){
+    let count = 0;
+    for (let i=(position%9); i<81; i=i+9) {  
+      //compares number against each of the elements in the column
+      if (this.solution[i] === number) {
+        count = count +1;  //if it finds a number the count is increased
+      }
+    }
+  return count
+  }
+};
+SudArray.prototype.checkManualSquare = function(position,number) {
+  if (number != 0){
+    let count = 0;
+    let col = Math.trunc((position%9)/3);
+    let ro = Math.trunc(Math.trunc(position/9)/3);
+    let square = col*3 + (ro*3*9);
+    count = 0;
+    for (let i=square; i<(square+21); i=i+9) {  
+      for(let j=0; j<3; j++) {
+        //compares 1-9 against each of the elements in the column
+        if (this.solution[(i+j)] === number) {
+          count = count + 1;  //if it finds a number the count increased
+        }
+      }
+    }
+    return count    
+  }  
+};
 
 
 SudArray.prototype.resetBoard = function() {
@@ -148,14 +197,55 @@ SudArray.prototype.resetBoard = function() {
   }  
 };
 
+SudArray.prototype.lockForManualTest = function() {
+  let inputNumber
+  for (let i=0; i<this.grid.length; i++){
+    inputNumber = this.grid[i]; //document.getElementById(i.toString()).innerHTML
+    if(parseInt(inputNumber)!=inputNumber){
+      inputNumber = parseFloat(inputNumber);
+    }
+    this.solution[i] = inputNumber;
+  } 
+};
+
 SudArray.prototype.lockForManual = function() {
   let inputNumber
   for (let i=0; i<81; i++){
     inputNumber = document.getElementById(i.toString()).innerHTML
-    manualArray.grid[i] =inputNumber
+    if(parseInt(inputNumber)!=inputNumber){
+      inputNumber = parseFloat(inputNumber);
+    }
+    this.grid[i] = inputNumber;
   } 
 };
-  
+
+SudArray.prototype.test = function() {
+  this.startSolution()
+  let x;
+  for(let i=0; i<this.grid.length; i++){
+    x = this.checkManualRow(i,this.solution[i]);
+    if (x === "Error") {
+      return x+" in row "+(parseInt(i/9)+1)+" is not a number"
+    }
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in row "+(parseInt(i/9)+1)
+    }
+    x = this.checkManualColumn(i,this.solution[i]);
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in column "+((i%9)+1)
+    }
+    x = this.checkManualSquare(i,this.solution[i]);
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in a square"
+    }
+  }    
+};
+
+SudArray.prototype.solve = function() {
+  for (let i=100; i<181; i++){  
+    document.getElementById(i.toString()).innerHTML = this.solution[i-100];
+  }
+};
 
 $("#reset").on("click",function () {   
   fullArraySudoku.resetBoard();
@@ -165,7 +255,23 @@ $("#manual").on("click",function () {
   alert(manualArray.grid)
 });
 
-$("#test").on("click",function () {   
+$("#test").on("click",function () {
+  alert(manualArray.test());
+});
+
+$("#solution").on("click",function () {
+  /*const testArray = new SudArray([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]); 
+  //testArray.startSolution();
+  testArray.buildSolution(); 
+  testArray.solve();*/
+  //manualArray.startSolution();
+  manualArray.buildSolution();
+  manualArray.solve(); 
+  //alert(blankPosition[1]);
+  /*manualArray.solve();*/
+  //alert(testArray.solution);
+  alert(manualArray.solution);
+  document.getElementById("solwrapper").style.visibility = "visible";
 });
 
 

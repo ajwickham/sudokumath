@@ -77,10 +77,47 @@ describe('Creating and testing grid', () => {
   });
 });
 
-describe('Front End', () => {   //These tests won't run properly until the DOM is ready
-  test('correctly capture the manual input', () => {
-    const testArray = new SudArray([],[])
-    testArray.lockForManual(); 
-    expect(testArray.lockForManual).toEqual(5);
+describe('Testing a manual fill', () => {
+  test('Correctly recognise a repeat in a manual row', () => {
+    const testArray = new SudArray([1,2,3,4,5,6,7,8,8],[]); 
+    testArray.startSolution();
+    expect(testArray.checkManualRow(7,8)).toEqual(2)
+  });  
+  test('Correctly recognise a repeat in a manual column from test function', () => {
+    const testArray = new SudArray([1,2,3,4,5,6,7,8,9,1],[]); 
+    expect(testArray.test()).toEqual("Too many 1 in column 1")
+  }); 
+  test('Correctly recognise a repeat in a manual square from test function', () => {
+    const testArray = new SudArray([1,2,3,4,5,6,7,8,9,2],[]); 
+    expect(testArray.test()).toEqual("Too many 2 in a square")
+  }); 
+  test('Correctly recognise a repeat from a full sudoku board', () => {
+    const testArray = new SudArray([2,8,6,7,4,1,9,3,5,4,2,9,3,8,5,7,6,0,3,5,7,9,6,0,4,1,8,7,4,1,5,0,9,3,8,6,8,9,0,6,1,3,5,4,7,6,3,5,8,7,4,1,0,9,5,6,8,4,3,7,0,9,1,1,7,3,0,9,8,6,5,4,9,0,4,1,5,6,8,7,3],[]); 
+    expect(testArray.test()).toEqual("Too many 2 in a square")
   });
+  test('Correctly recognise a repeat but ignore zeros', () => {
+    const testArray = new SudArray([0,0,3,4,5,6,7,8,9,0,3],[]); 
+    expect(testArray.test()).toEqual("Too many 3 in a square")
+  });
+  test('Correctly recognise and clean out non number characters', () => {
+    const manualArray = new SudArray([0,0,"3<br>",4,5,6,7,8,9,0,3],[]); 
+    manualArray.startSolution();
+    manualArray.lockForManualTest();
+    expect(manualArray.solution).toEqual([0,0,3,4,5,6,7,8,9,0,3])
+  }); 
+  test('Correctly find a solution from manual fill', () => {
+    const testArray = new SudArray([1,0,0],[]); 
+    testArray.lockForManualTest();
+    testArray.buildSolution();
+    expect(testArray.solution).toEqual([1,2,3])
+  });  
+  test('Correctly find a solution from one number', () => {
+    const testArray = new SudArray([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]); 
+    expect(testArray.buildSolution()).toEqual([1,2,3,4,5,6,7,8,9,4,5,6,7,8,9,1,2,3,7,8,9,1,2,3,4,5,6,2,1,4,3,6,5,8,9,7,3,6,5,8,9,7,2,1,4,8,9,7,2,1,4,3,6,5,5,3,1,6,4,2,9,7,8,6,4,2,9,7,8,5,3,1,9,7,8,5,3,1,6,4,2]);
+  }); 
+  test('Correctly find a solution from one number', () => {
+    const testArray = new SudArray([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]); 
+    testArray.startSolution();
+    expect(testArray.solution).toEqual([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+  });  
 });
