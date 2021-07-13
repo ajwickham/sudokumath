@@ -68,7 +68,12 @@ SudArray.prototype.startSolution = function() {
   for (let i=0; i<this.grid.length; i++) {
     this.solution[i] = this.grid[i];
   }
+  for (let j=this.grid.length; j<81; j++)(
+    this.solution.push(0)
+  )
 };
+
+
 
 SudArray.prototype.findNumberToTry = function(count,r) {
   let q;
@@ -201,10 +206,10 @@ SudArray.prototype.lockForManualTest = function() {
   let inputNumber
   for (let i=0; i<this.grid.length; i++){
     inputNumber = this.grid[i]; //document.getElementById(i.toString()).innerHTML
-    if(parseInt(inputNumber)!=inputNumber){
+    if(parseInt(inputNumber) !==inputNumber){
       inputNumber = parseFloat(inputNumber);
     }
-    this.solution[i] = inputNumber;
+    this.grid[i] = inputNumber;
   } 
 };
 
@@ -212,7 +217,7 @@ SudArray.prototype.lockForManual = function() {
   let inputNumber
   for (let i=0; i<81; i++){
     inputNumber = document.getElementById(i.toString()).innerHTML
-    if(parseInt(inputNumber)!=inputNumber){
+    if(parseInt(inputNumber)!==inputNumber){
       inputNumber = parseFloat(inputNumber);
     }
     this.grid[i] = inputNumber;
@@ -265,6 +270,7 @@ $("#solution").on("click",function () {
   testArray.buildSolution(); 
   testArray.solve();*/
   //manualArray.startSolution();
+  manualArray.lockForManual();
   manualArray.buildSolution();
   manualArray.solve(); 
   //alert(blankPosition[1]);

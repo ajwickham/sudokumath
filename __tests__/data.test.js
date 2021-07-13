@@ -17,7 +17,7 @@ describe('Creating and testing grid', () => {
   test('should build this.solution', () => {
     const testArray = new SudArray([1,2,0,4,0,6,7,8,9,0],[]);
     testArray.startSolution();
-    expect(testArray.solution).toEqual([1,2,0,4,0,6,7,8,9,0]);
+    expect(testArray.solution).toEqual([1,2,0,4,0,6,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   });
 
  test('should identify the lowest missing number missing from a row', () => {
@@ -46,29 +46,27 @@ describe('Creating and testing grid', () => {
   });
   test('should store result numbers in an array', () => {
     const testArray = new SudArray([1,2,0,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([1,2,6,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9]);
+    expect(testArray.buildSolution()).toEqual([1,2,6,4,7,7,7,8,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   });
   test('should store multiple result numbers in an array', () => {
     const testArray = new SudArray([0,2,0,4,7,7,7,7,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([6,2,8,4,7,7,7,7,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[]);
+    expect(testArray.buildSolution()).toEqual([6,2,8,4,7,7,7,7,9,1,2,3,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]);
   });
   test('should take into account previous trials', () => {
     const testArray = new SudArray([0,2,0,4,1,7,7,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([3,2,6,4,1,7,7,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9]);
+    expect(testArray.buildSolution()).toEqual([3,2,6,4,1,7,7,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   });
   test('if it gets to 9 and does not find a number, then an earlier number was incorrect. It should go back a previous trial and put in a higher number', () => {
     const testArray = new SudArray([0,2,0,4,1,5,0,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[])
-    expect(testArray.buildSolution()).toEqual([3,2,7,4,1,5,6,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9],[]);
+    expect(testArray.buildSolution()).toEqual([3,2,7,4,1,5,6,8,9,1,2,4,4,5,6,7,8,9,1,2,5,4,5,6,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]);
   });
   test('more complex', () => {
     const testArray = new SudArray([0,8,0,7,0,1,0,3,0,4,1,9,2,5,3,5,7,8],[])
-    testArray.startSolution();
-    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,5,3,5,7,8]);
+    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,5,3,5,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   });
   test('even more complex', () => {
     const testArray = new SudArray([0,8,0,7,0,1,0,3,0,4,0,9,0,0,0,0,0,0],[])
-    testArray.startSolution();
-    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,3,6,5,7,8]);
+    expect(testArray.buildSolution()).toEqual([2,8,5,7,4,1,6,3,9,4,1,9,2,3,6,5,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   });
   test('Full Sudoko', () => {
     const testArray = new SudArray([2,8,6,7,4,1,9,3,5,4,1,9,0,0,0,0,0,0,0,5,0,0,6,0,4,1,8,7,0,0,0,0,9,0,0,0,8,0,0,6,1,0,5,0,0,0,3,5,0,0,0,0,2,9,0,6,0,4,0,7,0,9,0,1,0,0,0,0,8,0,0,4,0,2,0,0,5,0,0,7,0],[])
@@ -103,13 +101,13 @@ describe('Testing a manual fill', () => {
     const manualArray = new SudArray([0,0,"3<br>",4,5,6,7,8,9,0,3],[]); 
     manualArray.startSolution();
     manualArray.lockForManualTest();
-    expect(manualArray.solution).toEqual([0,0,3,4,5,6,7,8,9,0,3])
+    expect(manualArray.solution).toEqual([0,0,3,4,5,6,7,8,9,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
   }); 
   test('Correctly find a solution from manual fill', () => {
-    const testArray = new SudArray([1,0,0],[]); 
+    const testArray = new SudArray(["1",0,0],[]); 
     testArray.lockForManualTest();
     testArray.buildSolution();
-    expect(testArray.solution).toEqual([1,2,3])
+    expect(testArray.solution).toEqual([1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
   });  
   test('Correctly find a solution from one number', () => {
     const testArray = new SudArray([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]); 
