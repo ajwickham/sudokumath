@@ -99,8 +99,8 @@ describe('Testing a manual fill', () => {
   });
   test('Correctly recognise and clean out non number characters', () => {
     const manualArray = new SudArray([0,0,"3<br>",4,5,6,7,8,9,0,3],[]); 
-    manualArray.startSolution();
     manualArray.lockForManualTest();
+    manualArray.startSolution();
     expect(manualArray.solution).toEqual([0,0,3,4,5,6,7,8,9,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
   }); 
   test('Correctly find a solution from manual fill', () => {
