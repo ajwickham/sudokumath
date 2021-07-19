@@ -225,6 +225,7 @@ SudArray.prototype.lockForManual = function() {
 };
 
 SudArray.prototype.test = function() {
+  this.lockForManual();
   this.startSolution();
   let x;
   for(let i=0; i<this.grid.length; i++){
@@ -243,7 +244,8 @@ SudArray.prototype.test = function() {
     if (x>1) {
       return "Too many "+this.solution[i]+" in a square";
     }
-  }    
+  }
+  return "No errors in this solution";    
 };
 
 SudArray.prototype.solve = function() {
@@ -257,7 +259,6 @@ $("#reset").on("click",function () {
 });
 $("#manual").on("click",function () {   
   manualArray.lockForManual();
-  alert(manualArray.grid);
 });
 
 $("#test").on("click",function () {
@@ -265,18 +266,9 @@ $("#test").on("click",function () {
 });
 
 $("#solution").on("click",function () {
-  /*const testArray = new SudArray([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[]); 
-  //testArray.startSolution();
-  testArray.buildSolution(); 
-  testArray.solve();*/
-  //manualArray.startSolution();
-  manualArray.lockForManual();
+  manualArray.test();
   manualArray.buildSolution();
   manualArray.solve(); 
-  //alert(blankPosition[1]);
-  /*manualArray.solve();*/
-  //alert(testArray.solution);
-  alert(manualArray.solution);
   document.getElementById("solwrapper").style.visibility = "visible";
 });
 
