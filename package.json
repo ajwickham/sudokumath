@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajwickham/sudokumath.git"
+    "url": "git+https://github.com/ajwickham/ES6-class-sudoku-refactor.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ajwickham/sudokumath/issues"
+    "url": "https://github.com/ajwickham/ES6-class-sudoku-refactor/issues"
   },
-  "homepage": "https://github.com/ajwickham/sudokumath#readme",
+  "homepage": "https://github.com/ajwickham/ES6-class-sudoku-refactor#readme",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",

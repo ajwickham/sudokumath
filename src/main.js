@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'bootstrap';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
+//import './css/styles.css';
 export default function SudArray(grid,solution) {
   this.grid = grid;
   this.solution = solution;
@@ -222,6 +222,30 @@ SudArray.prototype.lockForManual = function() {
     }
     this.grid[i] = inputNumber;
   } 
+};
+
+SudArray.prototype.jestTest = function() {
+  //this.lockForManual();
+  this.startSolution();
+  let x;
+  for(let i=0; i<this.grid.length; i++){
+    x = this.checkManualRow(i,this.solution[i]);
+    if (x === "Error") {
+      return x+" in row "+(parseInt(i/9)+1)+" is not a number";
+    }
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in row "+(parseInt(i/9)+1);
+    }
+    x = this.checkManualColumn(i,this.solution[i]);
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in column "+((i%9)+1);
+    }
+    x = this.checkManualSquare(i,this.solution[i]);
+    if (x>1) {
+      return "Too many "+this.solution[i]+" in a square";
+    }
+  }
+  return "No errors in this solution";    
 };
 
 SudArray.prototype.test = function() {
