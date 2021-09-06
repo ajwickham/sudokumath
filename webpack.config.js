@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -17,8 +18,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Shape Tracker',
       template: './src/index.html',
-      inject: 'body'
-    })
+      inject: 'body',
+    }),
   ],
   module: {
     rules: [

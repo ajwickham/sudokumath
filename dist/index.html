@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
   <title>Sudoku Solver</title>
 </head>
@@ -18,17 +18,20 @@
     </div>
   </div>  
   <br>
-  
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-6">
-      <button type="submit" id="reset"><u>Reset Board</u></button>
-      <button type="submit" id="manual"><u>Lock For Manual Fill</u></button>
-      <button type="submit" id="test"><u>Test</u></button>
-      <button type="submit" id="solution"><u>View Solution</u></button>
-    </div> 
-  </div>   
+  <div class = "container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>  
+      <div class="col-md-6">
+        <form id="button-form">
+          <button type="button" id="reset"><u>Reset Board</u></button>
+          <button type="button" id="manual"><u>Lock For Manual Fill</u></button>
+          <button type="button" id="test"><u>Test</u></button>
+          <button type="button" id="solution"><u>View Solution</u></button>
+        </form>    
+      </div> 
+    </div>   
+  </div>  
   <hr>
 
   <div class = "container">
